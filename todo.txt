@@ -1,0 +1,2 @@
+* hide/unhide properly
+* list indexed lists

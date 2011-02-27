@@ -1,0 +1,84 @@
+pre {
+  font-family: Tahoma, Verdana, Sans;
+  white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+  padding-left: 50px;
+}
+ul {
+  display: none;
+}
+ul.visible {
+  display: block;
+}
+ul.visible li {
+  text-align: left;
+}
+ul.visible a {
+  text-decoration: none;
+  color: blue;
+}
+#container {
+  margin: 0 auto;
+  width: 900px;
+}
+#nav-container {
+  display:block;
+  position: fixed;
+}
+#nav-container a, #nav-container a:hover, #nav-container a:visited {
+    text-decoration: none;
+    color: #ccc;
+}
+#nav-next {
+  position: absolute;
+  display: block;
+  width: 100px;
+  top: 120px;
+  left: -100px;
+  font-size:10em;
+}
+#nav-prev {
+  position: absolute;
+  display: block;
+  width: 100px;
+  top: 120px;
+  right: -1000px;
+  font-size:10em;
+  text-align: right;
+}
+#footer {
+  text-align: center;
+  font-size: 0.8em;
+}
+#list-label {
+ float: right;
+}
+  
+#list-label span {
+  height: 20px;
+  min-width: 100px;
+  display: block;
+  text-align: center;
+  background-color: #eee;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 2px 2px 0px 2px;  
+  font-size: 0.8em;
+  float: right;
+  margin-right: 2px;
+  white-space: nowrap;
+}
+a.list-label {
+  text-decoration: none !important;
+  color: #555;
+}
+
+/* Header */
+body > * {
+  display: block;
+  text-align: right;
+}
+h1, pre, pre > * {
+  display: block;
+  text-align: left !important;
+}
+
