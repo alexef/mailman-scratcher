@@ -1,2 +1,4 @@
 * hide/unhide properly
-* list indexed lists
+* list indexed lists or multiple posts per page
+* scratch only what's new
+* 

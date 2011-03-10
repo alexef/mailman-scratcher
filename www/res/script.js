@@ -1,7 +1,7 @@
-/* Move first word from h1, i.e. cut [Doctorat-anunturi] */
+/* Move first word from h2, i.e. cut [Doctorat-anunturi] */
 
 $(document).ready(function () {
-  text = $('h1').html();
+  text = $('h2').html();
   parts = text.split(']');
   while (parts[0].trim()[0] == '[') {
     label = parts.shift().trim().slice(1);
@@ -9,7 +9,7 @@ $(document).ready(function () {
   }
   
   text = parts.join(' ');
-  $('h1').html(text);
+  $('h2').html(text);
 });
   
   

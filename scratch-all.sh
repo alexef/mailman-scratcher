@@ -1,12 +1,24 @@
 #!/bin/bash
 
-PIPERMAIL_URL='http://localhost/list/doctorat.sas.unibuc.ro/pipermail/doctorat-anunturi/'
-ARTICLES_LIST=articles.txt
-ARTICLES_DIR=articles/
+if [ "$1" == "" ]; then
+	echo "Usage: $0 <list-name>"
+	exit -1
+fi
+if [ "$2" == "--local" ]; then
+	HOST="localhost/list/"
+else
+	HOST=""
+fi
+
+LIST=$1
+PIPERMAIL_URL='http://'$HOST'doctorat.sas.unibuc.ro/pipermail/'$LIST'/'
+ARTICLES_LIST=$LIST/articles.txt
+ARTICLES_DIR=$LIST/articles/
 
 # Get months list
 MONTHS=$(wget $PIPERMAIL_URL -q -O - | grep date.html | cut -f2 -d\")
 
+touch $ARTICLES_LIST
 > $ARTICLES_LIST
 mkdir -p $ARTICLES_DIR
  

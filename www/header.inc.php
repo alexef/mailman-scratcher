@@ -10,5 +10,7 @@
 </head>
 <body>
   <div id='container'>
+  	<?php if ($action != 'page' and $action != '') : ?>
     <a class="list-label" href="./?action=index"><span id='list-label'></span></a>
+	<?php endif; ?>
   

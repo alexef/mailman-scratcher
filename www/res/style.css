@@ -77,7 +77,7 @@ body > * {
   display: block;
   text-align: right;
 }
-h1, pre, pre > * {
+h1, h2, pre, pre > * {
   display: block;
   text-align: left !important;
 }

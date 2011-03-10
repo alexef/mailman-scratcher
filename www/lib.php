@@ -6,25 +6,28 @@
 
 function load_config()
 {
-  $data = file_get_contents('config.json');
+  global $list;
+
+  $data = @file_get_contents($list['name'] . '/config.json');
   return json_decode($data);
 }
 
 function save_config($data)
 {
-  file_put_contents('config.json', json_encode($data));
+  global $list;
+  @file_put_contents($list['name'] .'/config.json', json_encode($data));
 }
 
 function load_ids()
 {
-  global $config;
+  global $config, $list;
   
-  $files = glob('articles/*.html');
+  $files = @glob($list['name'] .'/articles/*.html');
   $ids = array();
   foreach($files as $f) {
     $str = basename($f);
     $id = substr($str, 0, strpos($str, '.'));
-    $ids["$id"] = $id;
+    $ids[] = $id;
   }
   
   sort($ids);
@@ -43,8 +46,10 @@ function load_ids()
 
 function load_post($id)
 {
+	global $list;
+
   $post = array();
-  $lines = file('articles/'.$id.'.html');
+  $lines = @file($list['name'].'/articles/'.$id.'.html');
   for ($i = 0; $i < 18; $i++)
     array_shift($lines);
   for ($i = 0; $i < 4; $i++)
@@ -56,13 +61,18 @@ function load_post($id)
   $post['title'] = preg_match_all("/<H1>(.*)<\/H1>/", $post['content'], $matches); 
   $post['title'] = $matches[1][0]; 
   
+  // fix display
+  $post['content'] = str_replace('<H1>','<H2>', $post['content']);
+  $post['content'] = str_replace('</H1>','</H2>', $post['content']);
+
   return $post;
 }
 
-function the_post($post, $ids)
+function the_post($post, $ids, $single=true)
 {
   $id = $post['id'];
-  the_nav($id, $ids);
+  if ($single)
+	  the_nav($id, $ids);
   
   echo $post['content'];
   
@@ -86,6 +96,7 @@ function the_title()
 
 function the_nav($id, $ids)
 {
+	global $list;
   $prev = null;
   $next = null;
   for($i=0; $i < count($ids); $i ++) {
@@ -99,19 +110,48 @@ function the_nav($id, $ids)
  
   echo "<div id='nav-container'>";
   if ($prev) 
-    echo " <a id='nav-prev' href='?action=view&id=$prev'>&raquo;</a>";
+    echo " <a id='nav-prev' href='?list=$list[name]&action=view&id=$prev'>&raquo;</a>";
   if ($next) 
-    echo " <a id='nav-next' href='?action=view&id=$next'>&laquo;</a>";
+    echo " <a id='nav-next' href='?list=$list[name]&action=view&id=$next'>&laquo;</a>";
   echo "</div>";
 }
-    
+  
+function the_page_nav($page, $perpage, $ids)
+{
+	global $list;
+	$prev = null;
+	$next = null;
+	if ($page > 0)
+		$prev = $page - 1;
+	if (($page+1) * $perpage < count($ids))
+		$next = $page + 1;
+
+	if ($prev < 0)
+		$prev = 0;
+
+  echo "<div id='nav-container'>";
+  if ($prev !== null) 
+    echo " <a id='nav-prev' href='?list=$list[name]&action=page&page=$prev'>&raquo;</a>";
+  if ($next) 
+    echo " <a id='nav-next' href='?list=$list[name]&action=page&page=$next'>&laquo;</a>";
+  echo "</div>";
+}
 
 function the_header()
 {
+  global $action;
   include('header.inc.php');
 }
 
 function the_footer()
 {
   include('footer.inc.php');
+}
+function get_list($lists, $name)
+{
+	foreach ($lists as $list) {
+		if ($list['name'] == $name)
+			return $list;
+	}
+	return array('name'=>'', 'title'=>'');
 }
