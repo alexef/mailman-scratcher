@@ -10,7 +10,7 @@ require_once('config.php');
 $perpage = 50;
 $post_perpage = 8;
 
-$list = get_list($lists, isset($_GET['list'])? $_GET['list']: '');
+$list = get_list($lists, isset($_GET['list'])? strtolower($_GET['list']): '');
 $config = load_config();
 $ids = load_ids();
 
