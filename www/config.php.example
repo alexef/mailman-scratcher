@@ -1,0 +1,11 @@
+<?php
+/**
+ * Mailman-scratcher Web viewer
+ *
+ */
+$lists = array (
+	array ('title'=> 'Doctorat Anunturi',
+			'name'=> 'doctorat-anunturi'),
+	array ('title'=> 'Doctorat Avizier',
+			'name'=> 'doctorat-avizier')
+);
