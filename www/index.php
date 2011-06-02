@@ -7,6 +7,8 @@
 require_once('lib.php');
 require_once('config.php');
 
+$banner = '';
+
 $perpage = 50;
 $post_perpage = 8;
 
@@ -17,6 +19,7 @@ $ids = load_ids();
 $action = isset($_GET['action'])? $_GET['action']:'';
 $id = isset($_GET['id'])? $_GET['id']:'';
 $page = isset($_GET['page'])? $_GET['page']:0;
+
 
 switch ($action) 
 {
@@ -64,9 +67,10 @@ switch ($action)
     // show a list of posts
 	$title = 'Listing posts';
 	$start = $page * $post_perpage;
-
+	
+	$banner = '<h2>Arhiva '. $list['title'].'</h2>'.
+		  '<h3>Universitatea din Bucure&#x219;ti</h3>';
 	the_header();
-	echo "<h1>Arhiva ". $list['title']."</h1>";
 	the_page_nav($page, $post_perpage, $ids);
 	for ($i = $start; $i < $start + $post_perpage && $i < count($ids); $i++) {
 		$post = load_post($ids[$i]);
@@ -77,6 +81,8 @@ switch ($action)
 
   default:
   	$title = 'Arhive';
+	$banner = '<h2>&#x218;coala Doctoral&#259; de Sociologie</h2>'.
+		  '<h3>Universitatea din Bucure&#x219;ti</h3>';
 	the_header();
 	echo "<h2>Selectati o lista: </h2>";
 	echo "<ul class='visible'>";

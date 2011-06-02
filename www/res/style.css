@@ -11,6 +11,13 @@ ul.visible {
 }
 ul.visible li {
   text-align: left;
+  border-bottom-color: gray;
+  border-bottom-style: dashed;
+  border-bottom-width: 0.5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-right: 10px;
+  width: 97%;
 }
 ul.visible a {
   text-decoration: none;
@@ -50,7 +57,10 @@ ul.visible a {
   font-size: 0.8em;
 }
 #list-label {
- float: right;
+  margin-top: 5px;
+  margin-right: 2.5px;
+  margin-left: 2.5px;
+  float: right;
 }
   
 #list-label span {
@@ -76,9 +86,43 @@ a.list-label {
 body > * {
   display: block;
   text-align: right;
+  background-color: #fff; 
 }
+#logo {
+  background-image: url('../image/sds-logo.jpg');
+  background-repeat: no-repeat;
+  
+  text-align: left;
+  padding-top: 10px;
+  height: 139px;
+  width: 900px;
+  
+  border-bottom-color: #a7a7a7; /* background gray */
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+}
+
 h1, h2, pre, pre > * {
   display: block;
   text-align: left !important;
+  margin-left:5px;
 }
 
+h2{
+  font-family: Tahoma, Verdana, Sans;
+  font-size: 2em;
+  display: block;
+  text-align: left !important;
+  padding-left:35px;
+  margin-top:10px;
+}
+
+h3{
+  font-family: Tahoma, Verdana, Sans;
+  font-size: 0.8em;
+  color: gray;
+  display: block;
+  text-align: left !important;
+  padding-left:35px;
+  margin-top:-30px;
+}

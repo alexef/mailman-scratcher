@@ -147,6 +147,13 @@ function the_footer()
 {
   include('footer.inc.php');
 }
+
+function the_banner(){
+  //returns the title for the banner
+  global $banner;
+  return $banner;
+}
+
 function get_list($lists, $name)
 {
 	foreach ($lists as $list) {
