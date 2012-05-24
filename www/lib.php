@@ -74,7 +74,11 @@ function the_post($post, $ids, $single=true)
   if ($single)
 	  the_nav($id, $ids);
   
-  echo $post['content'];
+  $content = $post['content'];
+  $content = str_replace('<B>Cosima Rughinis</B>', '<B>DOCSOC</B>', $content);
+  $content = str_replace('cosima.rughinis la sas.unibuc.ro', 'docsoc la sas.unibuc.ro', $content);
+
+  echo $content;
   
   the_actions($id);
 }
