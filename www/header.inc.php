@@ -17,6 +17,6 @@
 	<?php echo the_banner(); ?>
     </div>
   	<?php if ($action != 'page' and $action != '') : ?>
-    <a class="list-label" href="./?action=index"><span id='list-label'></span></a>
+        <a class="list-label" href="./?list=<?php echo $list['name']; ?>&action=index"><span id='list-label'></span></a>
 	<?php endif; ?>
   

@@ -39,13 +39,16 @@ switch ($action)
     
   case 'index':
     $title = 'Listing';
+    $banner = '<h2>Articole din lista '. $list['title'].'</h2>'.
+                '<h3>Universitatea din Bucure&#x219;ti</h3>';
+	
     the_header();
     
     echo "<h1>Lista ".$list['title']. "</h1>";
     echo "<ul class='visible'>";
     for ($i = 0; $i < $perpage; $i ++) {
       $post = load_post($ids[$i]);
-      echo "<li><a href='./?action=view&id=".$post['id']."'>".$post['title']."</a></li>\n";
+      echo "<li><a href='./?list=".$list['name']."&action=view&id=".$post['id']."'>".$post['title']."</a></li>\n";
     }      
     echo "</ul>";
     break;

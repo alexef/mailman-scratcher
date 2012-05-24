@@ -143,7 +143,7 @@ function the_page_nav($page, $perpage, $ids)
 
 function the_header()
 {
-  global $action;
+  global $action, $list;
   include('header.inc.php');
 }
 

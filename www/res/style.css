@@ -26,6 +26,7 @@ ul.visible a {
 #container {
   margin: 0 auto;
   width: 900px;
+  padding-right: 20px;
 }
 #nav-container {
   display:block;
