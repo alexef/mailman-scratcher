@@ -7,4 +7,3 @@ cd /opt/admin/mailman-scratcher
 for i in $LISTS ; do
 	./scratch-all.sh $i
 done
-
