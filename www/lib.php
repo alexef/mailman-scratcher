@@ -51,20 +51,40 @@ function load_post($id) {
         array_shift($lines);
     }
 
-    for ($i = 0; $i < 4; $i++) {
+    $n = count($lines) - array_search('        <!--threads-->' . "\n", $lines) + 1;
+
+    for ($i = 0; $i < $n; $i++) {
         array_pop($lines);
     }
 
-    $post['id']      = $id;
-    $post['content'] = implode('', $lines);
-    $post['title']   = preg_match_all('/<H1>(.*)<\/H1>/', $post['content'], $matches);
-    $post['title']   = $matches[1][0];
+    $article_info = array_slice($lines, 0, 6);
+    $article_body = array_slice($lines, 18);
+
+    $article_info = implode('', $article_info);
+    $article_body = implode('', $article_body);
+
+    $article_begin = substr($article_body, 0, 25);
+    $article_pre = substr($article_body, 25, strlen($article_body) - 60);
+    $article_end = substr($article_body, strlen($article_body) - 35);
+
+    $article_body = $article_begin . nl2br($article_pre) . $article_end;
+
+    $content = $article_info . $article_body;
+
+    $post['id'] = $id;
+
+    $post['title'] = preg_match_all('/<H1>(.*)<\/H1>/', $content, $matches);
+    $post['title'] = $matches[1][0];
+
+    $post['content'] = $content;
+    $post['content'] = str_replace('<B>',   '<strong>',  $post['content']);
+    $post['content'] = str_replace('</B>',  '</strong>', $post['content']);
     $post['content'] = str_replace('<H1>',  '<h2>',      $post['content']);
     $post['content'] = str_replace('</H1>', '</h2>',     $post['content']);
     $post['content'] = str_replace('<I>',   '<em>',      $post['content']);
     $post['content'] = str_replace('</I>',  '</em>',     $post['content']);
-    $post['content'] = str_replace('<B>',   '<strong>',  $post['content']);
-    $post['content'] = str_replace('</B>',  '</strong>', $post['content']);
+    $post['content'] = str_replace('<PRE>',   '<p>',      $post['content']);
+    $post['content'] = str_replace('</PRE>',  '</p>',     $post['content']);
 
     return $post;
 }
@@ -76,9 +96,12 @@ function the_post($post, $ids, $single = true) {
         the_nav($id, $ids);
     }
 
+    $post['title'] = preg_replace('#\[.*?\]\s*#s', '', $post['title']);
+
     $content = $post['content'];
     $content = str_replace('<strong>Cosima Rughinis</strong>', '<strong>DOCSOC</strong>', $content);
     $content = str_replace('cosima.rughinis la sas.unibuc.ro', 'docsoc la sas.unibuc.ro', $content);
+    $content = preg_replace('/(<h2>).*?(<\/h2>)/', '<h2>' . $post['title'] . '</h2>', $content);
 
     echo $content;
   
@@ -120,7 +143,7 @@ function the_nav($id, $ids) {
     echo '<div id="nav-container">';
 
     if ($prev) {
-        echo ' <a id="nav-prev: href="?list=' . $list['name'] . '&amp;action=view&amp;id=' . $prev . '">&raquo;</a>';
+        echo ' <a id="nav-prev" href="?list=' . $list['name'] . '&amp;action=view&amp;id=' . $prev . '">&raquo;</a>';
     }
 
     if ($next) {

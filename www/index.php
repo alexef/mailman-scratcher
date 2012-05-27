@@ -30,7 +30,7 @@ switch ($action) {
 case 'hide':
     // TODO check login
     if (!is_object($config)) {
-        $config = object();
+       // $config = object();
     }
 
     if (!is_array($config->hidden)) {
@@ -42,17 +42,16 @@ case 'hide':
     }
     
     save_config($config);
-    echo 'Ascuns! <a href="./">&laquo; Înapoi</a>';
+    echo 'Ascuns! <a href="./">&laquo; &Icirc;napoi</a>';
     break;
     
 case 'index':
-    $title   = 'Listing';
-    $banner  = '<h2>Articole din lista ' . $list['title'] .'</h2>';
-    $banner .= '<h3>Universitatea din Bucure&#x219;ti</h3>';
+    $title   = 'Arhiv&#x103; List&#x103;';
+    $banner  = '<h1 class="entry-title">Arhiv&#x103; List&#x103;: ' . $list['title'] .'</h1>';
 
     the_header();
 
-    echo '<h1>Lista ' . $list['title'] . '</h1>';
+    echo '<h1>Articole ' . $list['title'] . '</h1>';
     echo '<ul class="visible">';
 
     for ($i = 0; $i < $perpage; $i++) {
@@ -63,7 +62,9 @@ case 'index':
       echo '</a></li>';
     }
 
-    echo "</ul><!-- .visible -->";
+    echo '</ul>';
+    echo '<hr>';
+    the_footer();
     break;
     
 case 'view':
@@ -83,9 +84,8 @@ case 'view':
     break;
 
 case 'page':
-    $title   = 'Listing posts';
-    $banner  = '<h2>Arhiva ' . $list['title'] . '</h2>';
-    $banner .= '<h3>Universitatea din Bucure&#x219;ti</h3>';
+    $title   = 'Arhiv&#x103; List&#x103;';
+    $banner  = '<h1 class="entry-title">Arhiv&#x103;: ' . $list['title'] . '</h1>';
 
     $start = $page * $post_perpage;
 
@@ -102,19 +102,19 @@ case 'page':
     break;
 
 default:
-    $title   = 'Arhive';
-    $banner  = '<h2>&#x218;coala Doctoral&#259; de Sociologie</h2>';
-    $banner .= '<h3>Universitatea din Bucure&#x219;ti</h3>';
+    $title   = 'Arhive Liste';
+    $banner  = '<h1 class="entry-title">Arhive Liste</h1>';
 
     the_header();
 
-    echo '<h2>Selectati o lista: </h2>';
-    echo '<ul class="visible">';
+    echo '<h2>Selecta&#x21B;i o list&#x103;: </h2>';
+    echo '<ul>';
 
     foreach ($lists as $list) {
         echo '<li><a href="./?list=' . $list['name'] . '&amp;action=page">' . $list['title'] . '</a></li>';
     }
 
-    echo '</ul><!-- .visible -->';
+    echo '</ul>';
+    echo '<hr>';
     the_footer();
 }

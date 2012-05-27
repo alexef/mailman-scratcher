@@ -2,8 +2,8 @@
                 <p>
                     Copyright &copy; <?php echo date('Y'); ?>
 
-                    <a href="http://doctorat.sas.unibuc.ro/" title="Școala doctorală de sociologie" rel="home">
-                        Școala doctorală de sociologie
+                    <a href="http://doctorat.sas.unibuc.ro/" title="&#x218;coala Doctoral&#259; de Sociologie" rel="home">
+                        &#x218;coala Doctoral&#259; de Sociologie
                     </a>.
 
                     Toate drepturile rezervate.

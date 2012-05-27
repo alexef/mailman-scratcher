@@ -1,129 +1,159 @@
-pre {
-  font-family: Tahoma, Verdana, Sans;
-  white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
-  padding-left: 50px;
-}
-ul {
-  display: none;
-}
-ul.visible {
-  display: block;
-}
-ul.visible li {
-  text-align: left;
-  border-bottom-color: gray;
-  border-bottom-style: dashed;
-  border-bottom-width: 0.5px;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-right: 10px;
-  width: 97%;
-}
-ul.visible a {
-  text-decoration: none;
-  color: blue;
-}
-#container {
-  margin: 0 auto;
-  width: 900px;
-  padding-right: 20px;
-}
-#nav-container {
-  display:block;
-  position: fixed;
-}
-#nav-container a, #nav-container a:hover, #nav-container a:visited {
-    text-decoration: none;
-    color: #ccc;
-}
-#nav-next {
-  position: absolute;
-  display: block;
-  width: 100px;
-  top: 120px;
-  left: -100px;
-  font-size:10em;
-}
-#nav-prev {
-  position: absolute;
-  display: block;
-  width: 100px;
-  top: 120px;
-  right: -1000px;
-  font-size:10em;
-  text-align: right;
-}
-.footer {
-  text-align: center;
-  font-size: 0.8em;
-}
-#list-label {
-  margin-top: 5px;
-  margin-right: 2.5px;
-  margin-left: 2.5px;
-  float: right;
-}
-  
-#list-label span {
-  height: 20px;
-  min-width: 100px;
-  display: block;
-  text-align: center;
-  background-color: #eee;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 2px 2px 0px 2px;  
-  font-size: 0.8em;
-  float: right;
-  margin-right: 2px;
-  white-space: nowrap;
-}
-a.list-label {
-  text-decoration: none !important;
-  color: #555;
+html {
+    font-size: 1em;
+    overflow-y: scroll;
+    -ms-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
 }
 
-/* Header */
-body > * {
-  display: block;
-  text-align: right;
-  background-color: #fff; 
+body {
+  margin: 0;
+  font: 0.8125em/1.692307em "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #555555;
+  background: #ffffff;
+  padding: 0;
+}
+
+::-moz-selection {
+    background: #000000;
+    color: #ffffff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #000000;
+    color: #ffffff;
+    text-shadow: none;
+}
+a, a:visited {
+    color: #7089c9;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+    color: #0e0f2d;
+}
+a:focus { outline: none; }
+
+a:hover, a:active { outline: 0; }
+
+a:hover img { opacity: 0.85; }
+
+p { margin: 0 0 1.692307em 0 }
+
+strong { font-weight: bold; }
+
+em {
+    font-style: italic;
+    font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #e7e7e7;
+    margin: 1em 0 1.692307em 0;
+    padding: 0;
+}
+
+ul {
+    list-style: disc;
+    margin: 0 0 1.692307em 2.8em;
+    padding: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-style: normal;
+    font-weight: normal;
+    margin: 0 0 15px 0;
+    color: #333;
+    line-height: 1.3em;
+}
+
+h1 { font-size: 2.769230769230769em; }
+h2 { font-size: 1.846153846153846em; }
+h3 { font-size: 1.538461538461538em; }
+h4 { font-size: 1.384615384615385em; }
+h5 {
+    font-size: 1.230769230769231em;
+    font-weight: bold;
+}
+
+h6 {
+    font-size: 1.076923076923077em;
+    font-weight: bold;
+}
+
+img {
+    border: 0;
+    -ms-interpolation-mode: bicubic;
+    vertical-align: middle;
+}
+
+.container {
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative;
+}
+
+#brand {
+    width: 100%;
+    overflow: hidden;
+    margin-top: 30px;
 }
 #logo {
-  background-image: url('../image/sds-logo.jpg');
-  background-repeat: no-repeat;
-  
-  text-align: left;
-  padding-top: 10px;
-  height: 139px;
-  width: 900px;
-  
-  border-bottom-color: #a7a7a7; /* background gray */
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
+    float: left;
+    margin-right: 15px;
+}
+#site-info {
+    float: left;
+    padding-top: 10px;
+}
+#site-name {
+    margin: 0;
+    text-transform: uppercase;
+}
+#site-description {
+    color: #7089c9;
+    margin: 0;
+    text-transform: uppercase;
 }
 
-h1, h2, pre, pre > * {
-  display: block;
-  text-align: left !important;
-  margin-left:5px;
+.entry-title {
+    color: #cccccc;
+    line-height: 1.3em;
+    font-size: 1.846153846153846em;
+    text-transform: uppercase;
+    word-spacing: 2px;
 }
 
-h2{
-  font-family: Tahoma, Verdana, Sans;
-  font-size: 2em;
-  display: block;
-  text-align: left !important;
-  padding-left:35px;
-  margin-top:10px;
+#nav-container {
+    position: fixed;
+    top: 50%;
+    width: 940px;
 }
 
-h3{
-  font-family: Tahoma, Verdana, Sans;
-  font-size: 0.8em;
-  color: gray;
-  display: block;
-  text-align: left !important;
-  padding-left:35px;
-  margin-top:-30px;
+#nav-container a,
+#nav-container a:visited {
+    color: #cccccc;
+    font-size: 9em;
+    position: absolute;
+}
+
+#nav-container a:hover {
+    color: #0e0f2d;
+}
+
+#nav-next {
+    left: -90px;
+}
+
+#nav-prev {
+    right: -90px;
+}
+
+#footer {
+    color: #aaaaaa;
+    font-size: 0.8461538461538462em;
+    padding-bottom: 30px;
 }
