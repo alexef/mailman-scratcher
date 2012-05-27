@@ -72,12 +72,14 @@ case 'view':
         break;
     }
 
+    $banner  = '<h1 class="entry-title">Vizualizare Articol</h1>';
+
     if ($id == '') {
         $id = $ids[0];
     }
 
     $post = load_post($id);
-    
+
     the_header();
     the_post($post, $ids);
     the_footer();
