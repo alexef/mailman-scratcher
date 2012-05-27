@@ -40,11 +40,17 @@ a:hover img { opacity: 0.85; }
 
 p { margin: 0 0 1.692307em 0 }
 
-strong { font-weight: bold; }
+strong {
+    color: #cccccc;
+    font-weight: bold;
+}
 
 em {
+    color: #cccccc;
+    display: block;
     font-style: italic;
     font-family: Georgia, "Times New Roman", Times, serif;
+    margin-bottom: 15px;
 }
 
 hr {

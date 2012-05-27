@@ -57,7 +57,7 @@ function load_post($id) {
         array_pop($lines);
     }
 
-    $n = array_search('<!--beginarticle-->' . "\n", $lines) - 1;
+    $n = array_search('<!--beginarticle-->' . "\n", $lines);
 
     $article_info = array_slice($lines, 0, 6);
     $article_body = array_slice($lines, $n);
