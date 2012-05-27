@@ -133,6 +133,11 @@ img {
     word-spacing: 2px;
 }
 
+.list-label {
+    display: block;
+    margin-bottom: 15px;
+}
+
 #nav-container {
     position: fixed;
     top: 50%;

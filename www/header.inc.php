@@ -32,6 +32,6 @@
 
             <?php if ($action != 'page' && $action != '') : ?>
                 <a class="list-label" href="./?list=<?php echo $list['name']; ?>&amp;action=index">
-                    <span id='list-label'></span>
+                    &laquo; &Icirc;napoi la <?php echo $list['title'] ?>
                 </a><!-- .list-label -->
             <?php endif; ?>
