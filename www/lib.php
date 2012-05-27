@@ -85,13 +85,13 @@ function load_post($id) {
     $post['content'] = str_replace('</H1>', '</h2>',     $post['content']);
     $post['content'] = str_replace('<I>',   '<em>',      $post['content']);
     $post['content'] = str_replace('</I>',  '</em>',     $post['content']);
-    $post['content'] = str_replace('<PRE>',   '<p>',      $post['content']);
-    $post['content'] = str_replace('</PRE>',  '</p>',     $post['content']);
+    $post['content'] = str_replace('<PRE>',   '<p>',     $post['content']);
+    $post['content'] = str_replace('</PRE>',  '</p>',    $post['content']);
 
     return $post;
 }
 
-function the_post($post, $ids, $single = true) {
+function the_post($post, $ids, $single = true, $element_id = false) {
     $id = $post['id'];
 
     if ($single) {
@@ -103,7 +103,12 @@ function the_post($post, $ids, $single = true) {
     $content = $post['content'];
     $content = str_replace('<strong>Cosima Rughinis</strong>', '<strong>DOCSOC</strong>', $content);
     $content = str_replace('cosima.rughinis la sas.unibuc.ro', 'docsoc la sas.unibuc.ro', $content);
-    $content = preg_replace('/(<h2>).*?(<\/h2>)/', '<h2>' . $post['title'] . '</h2>', $content);
+
+    if ($element_id) {
+        $content = preg_replace('/(<h2>).*?(<\/h2>)/', '<h2 id="' . $element_id . '">' . $post['title'] . '</h2>', $content);
+    } else {
+        $content = preg_replace('/(<h2>).*?(<\/h2>)/', '<h2>' . $post['title'] . '</h2>', $content);
+    }
 
     echo $content;
   

@@ -97,7 +97,7 @@ case 'page':
     for ($i = $start; $i < ($start + $post_perpage) && $i < count($ids); $i++) {
         $post = load_post($ids[$i]);
 
-        the_post($post, $ids, false);
+        the_post($post, $ids, false, 'post-' . $i);
     }
 
     the_footer();
